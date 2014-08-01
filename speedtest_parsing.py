@@ -37,25 +37,25 @@ def get_testdata(server, name):
     print "Server %s is away from Bristol at %s km and has Download speed %s upload speed %s and latency %s" % (server, distance,download,upload,latency)
 
 def main():
-	p2 = subprocess.Popen(["speedtest-cli", "--list"], stdout=subprocess.PIPE)
-	rp = p2.communicate()
-	prc_data = rp[0].split('\n')
-	name = []
-	server = []
-	#rpp = rp[0].split('\n')
-	for data in prc_data:
-	  tmp = data.split(')')	
-	  for idx,val in enumerate(tmp):
-	    if idx == 0:
-	      server.append(val)
+    p2 = subprocess.Popen(["speedtest-cli", "--list"], stdout=subprocess.PIPE)
+    rp = p2.communicate()
+    prc_data = rp[0].split('\n')
+    name = []
+    server = []
+    #rpp = rp[0].split('\n')
+    for data in prc_data:
+        tmp = data.split(')')	
+	for idx,val in enumerate(tmp):
+            if idx == 0:
+                server.append(val)
 	    if idx == 1:
-	      name.append(val)
+	        name.append(val)
 	#print "name", name
 	for idx,val in enumerate(server):  
-	  print "Fetching data for server id %s and name %s" %(val, name[idx])
-	  if contains_digits(val):
-	    get_testdata(val,name[idx])
+            print "Fetching data for server id %s and name %s" %(val, name[idx])
+	    if contains_digits(val):
+                get_testdata(val,name[idx])
 
 if __name__ == "__main__":
-  main()
+    main()
     
