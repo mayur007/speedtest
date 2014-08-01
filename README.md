@@ -1,7 +1,5 @@
-speedtest
+Speedtest data logger to CSV
 =========
-
-speedtest data logger
 
 #Objective: 
 
